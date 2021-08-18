@@ -24,24 +24,46 @@ public class Calc {
         expression += in.nextLine();
 
         String[] newExp = expression.split(" ");
-        int a = Integer.parseInt(newExp[0]);
-        int b = Integer.parseInt(newExp[2]);
+        float a = Float.parseFloat(newExp[0]);
+        float b = Float.parseFloat(newExp[2]);
 
-        try {
-            solution.divide(a,b);
-        } catch (ArithmeticException e) {
-            System.out.println (e.toString());
-            e.printStackTrace();
+        if (newExp[1].contains("делить")) {
+            try {
+                solution.divide(a, b);
+            } catch (ArithmeticException e) {
+                System.out.println(e.toString());
+                e.printStackTrace();
+            }
         }
-
+        if (newExp[1].contains("плюс")) solution.plus(a,b);
+        if (newExp[1].contains("минус")) solution.minus(a,b);
+        if (newExp[1].contains("умножить")) solution.multiply(a,b);
 
 
 
     }
 
-    public void divide(int a, int b){
+    private void multiply(float a, float b) {
 
+        System.out.println(a*b);
 
+    }
+
+    private void minus(float a, float b) {
+
+        System.out.println(a-b);
+
+    }
+
+    private void plus(float a, float b) {
+
+        System.out.println(a+b);
+
+    }
+
+    public void divide(float a, float b){
+
+        System.out.println(a/b);
 
     }
 
