@@ -11,6 +11,8 @@
 
 import java.lang.ArithmeticException;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class Calc {
@@ -20,14 +22,22 @@ public class Calc {
         Calc solution = new Calc();
         Scanner in = new Scanner( System.in );
         String expression = "";
-        System.out.print( "Введите выражение: " );
+        System.out.print( "Enter expression: " );
         expression += in.nextLine();
+
+        final String regex = "[^0-9 A-z]";
+        final Pattern expPattern = Pattern.compile( regex );
+        final Matcher expMatcher = expPattern.matcher( expression );
+        if ( expMatcher.find() ){
+            System.err.println( "Invalid expression" );
+            System.exit(1);
+        }
 
         String[] newExp = expression.split(" ");
         float a = Float.parseFloat(newExp[0]);
         float b = Float.parseFloat(newExp[2]);
 
-        if (newExp[1].contains("делить")) {
+        if (newExp[1].contains("divide")) {
             try {
                 solution.divide(a, b);
             } catch (ArithmeticException e) {
@@ -35,9 +45,9 @@ public class Calc {
                 e.printStackTrace();
             }
         }
-        if (newExp[1].contains("плюс")) solution.plus(a,b);
-        if (newExp[1].contains("минус")) solution.minus(a,b);
-        if (newExp[1].contains("умножить")) solution.multiply(a,b);
+        if (newExp[1].contains("plus")) solution.plus(a,b);
+        if (newExp[1].contains("minus")) solution.minus(a,b);
+        if (newExp[1].contains("multiply")) solution.multiply(a,b);
 
 
 
