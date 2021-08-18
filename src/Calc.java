@@ -9,16 +9,38 @@
 *
 * */
 
+import java.lang.ArithmeticException;
 import java.util.Scanner;
+
 
 public class Calc {
 
     public static void main(String[] args) {
 
+        Calc solution = new Calc();
         Scanner in = new Scanner( System.in );
         String expression = "";
         System.out.print( "Введите выражение: " );
         expression += in.nextLine();
+
+        String[] newExp = expression.split(" ");
+        int a = Integer.parseInt(newExp[0]);
+        int b = Integer.parseInt(newExp[2]);
+
+        try {
+            solution.divide(a,b);
+        } catch (ArithmeticException e) {
+            System.out.println (e.toString());
+            e.printStackTrace();
+        }
+
+
+
+
+    }
+
+    public void divide(int a, int b){
+
 
 
     }
