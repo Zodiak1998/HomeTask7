@@ -25,7 +25,7 @@ public class Calc {
         System.out.print( "Enter expression: " );
         expression += in.nextLine();
 
-        final String regex = "[^0-9 A-z]";
+        final String regex = "[!&?/*%()=+-]";
         final Pattern expPattern = Pattern.compile( regex );
         final Matcher expMatcher = expPattern.matcher( expression );
         if ( expMatcher.find() ){
@@ -34,46 +34,48 @@ public class Calc {
         }
 
         String[] newExp = expression.split(" ");
-        float a = Float.parseFloat(newExp[0]);
-        float b = Float.parseFloat(newExp[2]);
+        float a = Float.parseFloat( newExp[0] );
+        float b = Float.parseFloat( newExp[2] );
 
-        if (newExp[1].contains("divide")) {
+        if ( newExp[1].contains( "divide" )) {
             try {
-                solution.divide(a, b);
-            } catch (ArithmeticException e) {
-                System.out.println(e.toString());
+                solution.divide( a, b );
+            } catch ( ArithmeticException e ) {
+                System.err.println( "Divide on zero not good  " + e.toString() );
                 e.printStackTrace();
+
             }
         }
-        if (newExp[1].contains("plus")) solution.plus(a,b);
-        if (newExp[1].contains("minus")) solution.minus(a,b);
-        if (newExp[1].contains("multiply")) solution.multiply(a,b);
+        if ( newExp[1].contains( "plus" )) solution.plus( a,b );
+        if ( newExp[1].contains( "minus" )) solution.minus( a,b );
+        if ( newExp[1].contains( "multiply" )) solution.multiply( a,b );
 
 
 
     }
 
-    private void multiply(float a, float b) {
+    private void multiply( float a, float b ) {
 
-        System.out.println(a*b);
-
-    }
-
-    private void minus(float a, float b) {
-
-        System.out.println(a-b);
+        System.out.println( "result: " + a*b );
 
     }
 
-    private void plus(float a, float b) {
+    private void minus( float a, float b ) {
 
-        System.out.println(a+b);
+        System.out.println( "result: " + (a-b) );
 
     }
 
-    public void divide(float a, float b){
+    private void plus( float a, float b ) {
 
-        System.out.println(a/b);
+        System.out.println( "result: " + (a+b) );
+
+    }
+
+    public void divide( float a, float b ){
+
+        float c = a/b;
+        System.out.println( "result: " + c );
 
     }
 
