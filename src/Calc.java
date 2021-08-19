@@ -39,7 +39,7 @@ public class Calc {
 
         if ( newExp[1].contains( "divide" )) {
 
-            if (newExp[2].contains("0")) System.err.println( "Divide on zero not good  " + e.toString() );
+            if (newExp[2].contains("0")) System.err.println( "Divide on zero not good" );
             else solution.divide( a, b );
 
         }
