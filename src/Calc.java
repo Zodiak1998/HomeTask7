@@ -37,15 +37,15 @@ public class Calc {
         float a = Float.parseFloat( newExp[0] );
         float b = Float.parseFloat( newExp[2] );
 
-        if ( newExp[1].contains( "divide" )) {
+        if ( newExp[1].contains( "divide" ) || newExp[1].contains( "поделить" )) {
 
             if (newExp[2].contains("0")) System.err.println( "Divide on zero not good" );
             else solution.divide( a, b );
 
         }
-        if ( newExp[1].contains( "plus" )) solution.plus( a,b );
-        if ( newExp[1].contains( "minus" )) solution.minus( a,b );
-        if ( newExp[1].contains( "multiply" )) solution.multiply( a,b );
+        if ( newExp[1].contains( "plus" ) || newExp[1].contains( "плюс" )) solution.plus( a,b );
+        if ( newExp[1].contains( "minus" ) || newExp[1].contains( "минус" )) solution.minus( a,b );
+        if ( newExp[1].contains( "multiply" ) || newExp[1].contains( "умножить" )) solution.multiply( a,b );
 
 
 
