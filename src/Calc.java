@@ -38,13 +38,10 @@ public class Calc {
         float b = Float.parseFloat( newExp[2] );
 
         if ( newExp[1].contains( "divide" )) {
-            try {
-                solution.divide( a, b );
-            } catch ( ArithmeticException e ) {
-                System.err.println( "Divide on zero not good  " + e.toString() );
-                e.printStackTrace();
 
-            }
+            if (newExp[2].contains("0")) System.err.println( "Divide on zero not good  " + e.toString() );
+            else solution.divide( a, b );
+
         }
         if ( newExp[1].contains( "plus" )) solution.plus( a,b );
         if ( newExp[1].contains( "minus" )) solution.minus( a,b );
